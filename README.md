@@ -17,11 +17,7 @@
 
 ## How to Use
 
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/priyamathur22/RouteIQ--A-Journey-Optimiser.git
-
+1. Clone the repository
 2. Open the project folder in VS Code (or any IDE).
 
 3. Open index.html in your browser.
