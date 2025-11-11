@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RouteIQ</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+    <div class="container">
+        <!-- Updated App Title -->
+        <h1 class="app-title">
+            <span class="route-text">Route</span><span class="iq-text">IQ</span>
+        </h1>
+        <p class="tagline">Our Route, Your Budget, Your Journey.</p>
+
+        <form id="routeForm" class="form-card">
+            <div id="validation-message" class="validation-message" role="alert"></div>
+
+            <div class="row">
+                <div class="input-group">
+                    <label for="startCity">Start City 📍</label>
+                    <select id="startCity" required>
+                        <option value="" disabled selected>Select</option>
+                        <option value="Nalanda">Nalanda</option>
+                        <option value="Rajgir">Rajgir</option>
+                        <option value="Gaya">Gaya</option>
+                        <option value="Pawapuri">Pawapuri</option>
+                        <option value="Kakolat">Kakolat</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="endCity">Destination City 🏁</label>
+                    <select id="endCity" required>
+                        <option value="" disabled selected>Select</option>
+                        <option value="Nalanda">Nalanda</option>
+                        <option value="Rajgir">Rajgir</option>
+                        <option value="Gaya">Gaya</option>
+                        <option value="Pawapuri">Pawapuri</option>
+                        <option value="Kakolat">Kakolat</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-group full-width budget-group">
+                    <label for="budget">Budget (₹): <span id="budgetValue">0</span></label>
+                    <div id="budget-tooltip" class="budget-tooltip">₹ 0</div>
+                    <input type="range" id="budget" min="0" max="20000" step="1000" value="0">
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="input-group full-width">
+                    <label for="costPriority">
+                        Cost vs. Time Priority: 
+                        <span id="priorityText">Balanced</span>
+                    </label>
+                    <input type="range" id="costPriority" min="-100" max="100" step="10" value="0">
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="input-group">
+                    <label for="preference">Route Preference (Primary Sort) ✨</label>
+                    <select id="preference" required>
+                        <option value="" disabled selected>Select Preference</option>
+                        <option value="shortest">Shortest Route (Best Choice First)</option>
+                        <option value="longest">Longest Route (Scenic/Extended First)</option>
+                    </select>
+                </div>
+                
+                <div class="input-group">
+                    <label for="sortBy">Sort Results By (Secondary Sort) ⬇️</label>
+                    <select id="sortBy">
+                        <option value="score">Primary Score</option>
+                        <option value="cost">Cost</option>
+                        <option value="distance">Distance</option>
+                        <option value="days">Days</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <button type="submit" id="findRouteBtn">
+                    <i class="fas fa-route"></i> Calculate Optimized Routes
+                </button>
+            </div>
+        </form>
+
+        <div id="results-container" class="results-container">
+            <div id="loading-spinner" class="loading-spinner"></div>
+            <div id="results" class="results" aria-live="polite">
+                <p class="initial-message">Enter your journey details above to find optimized routes.</p>
+            </div>
+        </div>
+
+        <div id="map-card" class="map-card">
+            <h2>🗺️ Route Map Visualization</h2>
+            <div id="routeMap" style="height: 300px;"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <p>&copy; 2025 RouteIQ. All rights reserved.</p>
+        <p>Made with ❤️ by Priya Mathur</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
